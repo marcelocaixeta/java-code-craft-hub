@@ -1,0 +1,23 @@
+# Maven / Java
+target/
+*.class
+*.jar
+*.war
+
+# Spring Boot
+.springBeans
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker (não commitar credenciais)
+.env

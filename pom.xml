@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Coordenadas do projeto -->
+    <groupId>com.codecrafthub</groupId>
+    <artifactId>codecrafthub</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>CodeCraftHub</name>
+    <description>Plataforma de aprendizado personalizada para desenvolvedores - API REST simples</description>
+
+    <properties>
+        <java.version>17</java.version>
+        <!-- Spring Boot 3.x exige Java 17+ -->
+        <spring-boot.version>3.2.5</spring-boot.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!-- Herda defaults do Spring Boot (versões de libs, plugins) -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version>
+        <relativePath/>
+    </parent>
+
+    <dependencies>
+        <!-- Web: REST controllers, Jackson JSON, Tomcat embutido -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Validação (jakarta.validation) - útil para @NotBlank etc. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- Suporte a LocalDate / LocalDateTime no Jackson (JSR-310) -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+        </dependency>
+
+        <!-- Testes (opcional, mas boa prática) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+        <!-- Nome do jar final: app.jar (facilita o Dockerfile) -->
+        <finalName>app</finalName>
+    </build>
+</project>

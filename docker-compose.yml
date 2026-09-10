@@ -1,0 +1,14 @@
+services:
+  codecrafthub:
+    build: .
+    image: codecrafthub:latest
+    container_name: codecrafthub-api
+    ports:
+      - "8080:8080"
+    volumes:
+      # Persiste os dados no host, sem precisar de banco.
+      # O arquivo ./courses.json é criado antes do primeiro `up`.
+      - ./courses.json:/app/courses.json
+    environment:
+      - JAVA_OPTS=
+    restart: unless-stopped
