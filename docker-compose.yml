@@ -12,3 +12,15 @@ services:
     environment:
       - JAVA_OPTS=
     restart: unless-stopped
+
+  # Painel frontend (HTML/CSS/JS puro) — sem instalar nada no host
+  frontend:
+    image: nginx:alpine
+    container_name: codecrafthub-ui
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    depends_on:
+      - codecrafthub
+    restart: unless-stopped

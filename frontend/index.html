@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeCraftHub — Painel de Cursos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div>
+        <h1>CodeCraftHub</h1>
+        <p class="subtitle">Painel de cursos — CRUD sobre a API REST</p>
+      </div>
+      <div class="api-box">
+        <label for="apiBase">API base</label>
+        <input id="apiBase" type="text" value="http://localhost:8080/api/courses" spellcheck="false" />
+        <button id="reloadBtn" class="btn secondary" type="button">Recarregar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Cartões de estatísticas -->
+    <section id="stats" class="stats" aria-live="polite">
+      <div class="card"><span class="num" id="stTotal">–</span><span class="lbl">Total</span></div>
+      <div class="card"><span class="num" id="stNotStarted">–</span><span class="lbl">Not Started</span></div>
+      <div class="card"><span class="num" id="stInProgress">–</span><span class="lbl">In Progress</span></div>
+      <div class="card"><span class="num" id="stCompleted">–</span><span class="lbl">Completed</span></div>
+    </section>
+
+    <div id="msg" class="msg hidden" role="alert"></div>
+
+    <div class="grid">
+      <!-- Formulário criar/editar -->
+      <section class="panel">
+        <h2 id="formTitle">Adicionar curso</h2>
+        <form id="courseForm">
+          <input type="hidden" id="editId" />
+          <label>Nome *
+            <input id="fName" type="text" required maxlength="120" placeholder="Ex: Python Basics" />
+          </label>
+          <label>Descrição *
+            <textarea id="fDesc" required rows="3" maxlength="500" placeholder="Ex: Learn Python fundamentals"></textarea>
+          </label>
+          <div class="row2">
+            <label>Meta (target_date) *
+              <input id="fDate" type="date" required />
+            </label>
+            <label>Status *
+              <select id="fStatus">
+                <option>Not Started</option>
+                <option>In Progress</option>
+                <option>Completed</option>
+              </select>
+            </label>
+          </div>
+          <div class="form-actions">
+            <button class="btn primary" type="submit" id="submitBtn">Adicionar</button>
+            <button class="btn ghost hidden" type="button" id="cancelEditBtn">Cancelar edição</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Lista + busca -->
+      <section class="panel">
+        <div class="list-head">
+          <h2>Cursos</h2>
+          <input id="search" type="search" placeholder="Buscar por nome ou descrição…" />
+        </div>
+        <div id="list" class="list"><p class="muted">Carregando…</p></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="wrap footer">
+    <span class="muted">PUT aceita parcial — ex: só <code>{"status":"In Progress"}</code>. Backend em <code>courses.json</code>, sem banco.</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
